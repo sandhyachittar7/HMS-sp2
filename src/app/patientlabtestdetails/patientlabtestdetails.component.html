@@ -1,0 +1,99 @@
+<p>PATIENT LAB TEST DETAILS</p>
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body{
+            background-image: linear-gradient(to right bottom, #cae195, #ddd183, #edc07a, #f9ae7c, #ff9d86, #f4948a, #e88b8d, #da848f, #c07f85, #a6797c, #8c7374, #716c6c);
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+<div class="row">
+    <div class="col-md-6 mt-2">
+        <form [formGroup]="plabGroup">
+            <div class="form-group">
+                <label for="id"> <b>Id</b></label>&nbsp;
+                <input type="text" formControlName="id"/>&nbsp;
+                <input type="button" value="Search" (click)="searchPatientLabTestDetails()"/>
+            </div><br/>
+           <!-- <div class="form-group">
+            <label for="labTestId"><b>LabTest Id</b></label>&nbsp;
+            <input type="text"formControlName="labTestId" class="form-control"/>
+          </div><br/> -->
+        
+        
+        
+        <!-- <div class="form-group">
+            <label for="doctorId"><b>Doctor Id</b></label>&nbsp;
+            <input type="text"formControlName="doctorId" class="form-control"/>
+        </div><br/>
+        <div class="form-group">
+            <label for="patientId"><b>Patient Id</b></label>
+            <input type="text"formControlName="patientId" class="form-control" placeholder="Enter patientId" required/>
+            <div style="color: red;" *ngIf="plabGroup.controls.patientId.errors && plabGroup.controls.patientId.touched"> Enter PatientId </div>
+        </div><br/> -->
+        <div class="form-group">
+            <label><b>Patient Name</b></label>&nbsp;
+            <select formControlName="patientId" class="form-control" >
+                <option></option>
+                <option value="{{pat.patientId}}" *ngFor="let pat of patientList">{{pat.patientName}}</option>
+            </select>
+        </div>
+        
+        
+        <div class="form-group">
+            <label><b>Doctor Name</b></label>&nbsp;
+            <select formControlName="doctorId" class="form-control" >
+                <option></option>
+                <option value="{{doct.doctorId}}" *ngFor="let doct of doctorList">{{doct.doctorName}}</option>
+            </select>
+        </div>
+    
+        <div class="form-group">
+            <label><b>LabTest Name</b></label>&nbsp;
+            <select formControlName="labTestId" class="form-control" >
+                <option></option>
+                <option value="{{lab.labTestId}}" *ngFor="let lab of labTestList">{{lab.labTestType}}</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="testDate"><b>Test Date</b></label>&nbsp;
+            <input type="text" formControlName="testDate" class="form-control" placeholder="Enter Date"required/>
+            <div style="color: red;" *ngIf="plabGroup.controls.testDate.errors && plabGroup.controls.testDate.touched"> enter Test Date </div>
+        </div><br/>
+        
+       
+<div>
+    &nbsp;<input type="button" value="Save" (click)="savePatientLabTestDetails()" class="btn btn-sm btn-primary"/>&nbsp;
+    <input type="button" value="Delete" (click)="deletePatientLabTestDetails()" class="btn btn-sm btn-danger" />&nbsp;
+    <input type="button" value="Update" (click)="updatePatientLabTestDetails()" class="btn btn-sm btn-dark" />
+</div>
+    </form>
+    </div>
+    <div class="col-md-6">
+        <table class="table table-striped">
+            <tr>
+                <th>Id</th>
+                <th>Test Date</th>
+                <th>Labtest Type</th>
+                <th>Doctor Name</th> 
+                <th>Patient Name</th> 
+                     
+            </tr>
+            <tr *ngFor="let plab of PatientLabTestDetailsList">
+                <td>{{plab.id}}</td>
+                <td>{{plab.testDate | date:'mediumDate'}}</td>
+                <td>{{plab.labTestType}}</td> 
+                <td>{{plab.doctorName}}</td> 
+                <td>{{plab.patientName}}</td>    
+                          
+            </tr>
+        </table>
+    </div>
+    </div>
+</body>
+</html>

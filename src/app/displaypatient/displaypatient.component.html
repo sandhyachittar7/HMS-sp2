@@ -1,0 +1,64 @@
+<p>DISPLAY PATIENT</p>
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body{
+            background-image: linear-gradient(to right bottom, #cae195, #ddd183, #edc07a, #f9ae7c, #ff9d86, #f4948a, #e88b8d, #da848f, #c07f85, #a6797c, #8c7374, #716c6c);
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-md">
+        <div class="row">
+            <div class="col-md-6 mt-2">
+                <form [formGroup]="patGroup">
+                </form></div></div>
+
+
+<div class="col-md-8">
+    <table class="table table-striped">
+        <tr>
+            <th>Patient Id</th>
+            <th>Patient Name</th>
+            <th>Age</th>
+            <th>Weight</th>
+            <th>Gender</th>
+            <th>Address</th>
+            <th>Phone Number</th>
+            <th>Disease</th>
+            <th>Patient Type</th>
+            
+        </tr>
+        
+        <tr *ngFor="let pat of patientList">
+            <td>{{pat.patientId}}</td>
+            <td>{{pat.patientName | titlecase}}</td>
+            <td>{{pat.age}}</td>
+            <td>{{pat.weight}}</td>
+            <td>{{pat.gender}}</td>
+            <td>{{pat.address}}</td>
+            <td>{{pat.phoneNumber}}</td>
+            <td>{{pat.disease}}</td>
+            <td>{{pat.patientType}}</td>
+
+            <td><input type="button" value="Delete"(click)="deletePatient(pat.patientId)" class="btn btn-sm btn-danger" />&nbsp;</td>
+            <!-- <td> <a  (click)="deletePatient()" class="btn btn-sm btn-gray" >Delete</a></td> -->
+            
+        </tr>
+
+        
+    </table>
+    
+    <!-- <form action="">
+        <div>
+            
+    <input type="button" value="Delete" (click)="deletePatient()" class="btn btn-sm btn-gray" />
+        </div>
+    </form> -->
+</div>
+    </div>
+</body>
+</html>

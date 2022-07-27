@@ -1,0 +1,126 @@
+<p>CREATEPATIENT</p>
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body{
+            background-image: linear-gradient(to right bottom, #cae195, #ddd183, #edc07a, #f9ae7c, #ff9d86, #f4948a, #e88b8d, #da848f, #c07f85, #a6797c, #8c7374, #716c6c);
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-md">
+<div class="row">
+    <div class="col-md-6 mt-2">
+        <form [formGroup]="patGroup">
+            <div class="form-group">&nbsp;
+                <label for="patientId"><b>Patient Id</b></label>&nbsp;
+                <input type="text" formControlName="patientId" />&nbsp;
+                <input type="button" value="Search" (click)="searchPatient()" />
+            </div><br/>
+        <div class="form-group">
+            <label for="patientName"><b>Patient Name</b></label>
+            <input type="text" formControlName="patientName" class="form-control" placeholder="Enter Name" required />
+            <div style="color: red;" *ngIf="patGroup.controls.patientName.errors && patGroup.controls.patientName.touched"> Enter Name </div>
+        </div>
+
+	<div class="form-group">
+            <label for="age"><b>Age</b></label>
+            <input type="text" formControlName="age" class="form-control" placeholder="Enter Age" required/>
+            <div style="color: red;" *ngIf="patGroup.controls.age.errors && patGroup.controls.age.touched"> Enter Age </div>
+    </div>
+
+	<div class="form-group">
+            <label for="weight"><b>Weight</b></label>
+            <input type="text" formControlName="weight" class="form-control" placeholder="Enter Weight" required/>
+            <div style="color: red;" *ngIf="patGroup.controls.weight.errors && patGroup.controls.weight.touched"> Enter Weight </div>
+    </div>
+
+	 <div class="form-group">
+            <label for="gender"><b>Gender</b></label>
+            <select formControlName="gender" class="form-control">
+                <option></option>
+            <option>Male</option>
+		    <option>Female</option>
+	</select>
+	 </div>
+
+	<div class="form-group">
+            <label for="address"><b>Address</b></label>
+            <input type="text" formControlName="address" class="form-control" placeholder="Enter Address" required/>
+            <div style="color: red;" *ngIf="patGroup.controls.address.errors && patGroup.controls.address.touched"> Enter Address </div>
+        </div>
+
+	<div class="form-group">
+            <label for="phoneNumber"><b>Phone Number</b></label>
+            <input type="tel"  formControlName="phoneNumber" class="form-control"  placeholder="Enter PhoneNumber" required/>
+            <div style="color: red;" *ngIf="patGroup.get('phoneNumber').errors && patGroup.get('phoneNumber').errors.minlength"> Enter phoneNumber </div>
+        </div>
+
+
+	<div class="form-group">
+            <label for="disease"><b>Disease</b></label>
+            <input type="text" formControlName="disease" class="form-control" placeholder="Enter Disease" required />
+            <div style="color: red;" *ngIf="patGroup.controls.disease.errors && patGroup.controls.disease.touched"> Enter Disease </div>
+        </div>
+
+	<div class="form-group">
+            <label for="patientType"><b>Patient Type</b></label>
+            <select formControlName="patientType" class="form-control">
+                <option></option>
+                <option>Inpatient</option>
+		        <option>Outpatient</option>
+	        </select>
+	 </div><br/>
+	<!-- <div class="form-group">
+            <label for="doctorId">Doctor Id</label>
+            <select formControlName="doctorId" class="form-control">
+                <option></option>
+                <option value="{{doc.doctorId}}" *ngFor="let doc of doctorList">{{doc.doctorName}}</option>
+            </select>
+	 </div> -->
+<div>
+    &nbsp;<input type="button" value="Save" (click)="savePatient()" class="btn btn-sm btn-primary"/> &nbsp;
+    <!-- <input type="button" value="Delete" (click)="deletePatient()" class="btn btn-sm btn-gray" /> -->
+    <input type="button" value="Update" (click)="updatePatient()" class="btn btn-sm btn-dark" />
+
+</div>
+</form>
+</div>
+
+    <!-- <div class="col-md-6">
+        <table class="table table-striped">
+            <tr>
+                <th>Patient Id</th>
+                <th>Patient Name</th>
+                <th>Age</th>
+                <th>Weight</th>
+                <th>Gender</th>
+		        <th>Address</th>
+		        <th>Phone Number</th>
+		        <th>Disease</th>
+		        <th>Patient Type</th>
+		        
+            </tr>
+            <tr *ngFor="let pat of patientList">
+                <td>{{pat.patientId}}</td>
+                <td>{{pat.patientName | titlecase}}</td>
+		        <td>{{pat.age}}</td>
+		        <td>{{pat.weight}}</td>
+		        <td>{{pat.gender}}</td>
+		        <td>{{pat.address}}</td>
+		        <td>{{pat.phoneNumber}}</td>
+		        <td>{{pat.disease}}</td>
+		        <td>{{pat.patientType}}</td>
+                
+            </tr>
+        </table>
+
+
+    </div> -->
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<p>REGISTER</p>
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body{
+            background-image:  linear-gradient(to left top, #55e6f3, #55e6f3, #55e6f3, #55e6f3, #55e6f3, #6de7f8, #81e9fc, #94eaff, #baedff, #daf1ff, #f2f6ff, #ffffff);
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+<div class="row">
+    <div class="col-md-6 mt-2">
+        <form [formGroup]="regGroup">
+            <div class="form-group">
+                <label for="userId"><b>User Id</b></label>&nbsp;
+                <input type="text" formControlName="userId" />
+            </div><br/>
+
+        <div class="form-group">
+            <label for="userName"><b>User Name</b></label>&nbsp;
+            <input type="text" formControlName="userName" class="form-control" placeholder="Enter User Name" required/>
+            <div style="color: red;" *ngIf="regGroup.controls.userName.errors && regGroup.controls.userName.touched"> Enter User Name </div>
+            
+        </div><br/>
+        <div class="form-group">
+            <label for="email"><b>Email Id</b></label>&nbsp;
+            <input type="email" formControlName="email" class="form-control"  pattern=".+@gmail\.com" placeholder="Enter emailId" required />
+            <div style="color: red;" *ngIf="regGroup.controls.email.errors && regGroup.controls.email.touched"> Enter valid Id </div>
+            
+        </div><br/>
+        <div class="form-group">
+            <label for="password"><b>Password</b></label>&nbsp;
+            <input type="password" formControlName="password" class="form-control" placeholder="Enter Password" required/>
+            <div style="color: red;" *ngIf="regGroup.controls.password.errors && regGroup.controls.password.touched"> Enter Password </div>
+        </div><br/>
+        <div class="form-group">
+            <label for="confirmPassword"><b>Confirm Password</b></label>&nbsp;
+            <input type="password" formControlName="confirmPassword" class="form-control" placeholder="Confirm Password" required/>
+            <div style="color: red;" *ngIf="regGroup.controls.confirmPassword.errors && regGroup.controls.confirmPassword.touched"> Enter Confirm Password </div>
+        </div> <br>
+        
+        
+        <div class="form-group">
+            <label for="roleId"><b>Role Id</b></label>
+           
+            <select formControlName="roleId" class="form-control">
+                <option></option>
+                <option>2</option>
+            </select>
+        </div>
+        <br/>
+    
+<div>
+
+<input type="button"  value="Register" (click)="saveUser()" class="btn btn-sm btn-primary"  />
+</div>
+    </form>
+    
+</div>
+</div>
+</body>
+</html>

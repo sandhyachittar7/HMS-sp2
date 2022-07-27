@@ -1,0 +1,105 @@
+<p>OUTPATIENT</p>
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body{
+            background-image: linear-gradient(to right bottom, #cae195, #ddd183, #edc07a, #f9ae7c, #ff9d86, #f4948a, #e88b8d, #da848f, #c07f85, #a6797c, #8c7374, #716c6c);
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+<div class="row">
+    <div class="col-md-6 mt-2">
+<form [formGroup]="outpatientGroup">
+    
+    
+    <div class="form-group">
+        <label for="outPatientId"><b>OutPatient Id</b></label>&nbsp;
+        <input type="text" formControlName="outPatientId"/>&nbsp;
+        <input type="button" value="Search" (click)="searchOutPatient()"/>
+    </div>
+      <!-- <div class="form-group">
+        <label for="patientId"><b>Patient Id</b></label>&nbsp;
+       <input type="text" formControlName="patientId" class="form-control" placeholder="Enter PatientId" required/>
+       <div style="color: red;" *ngIf="outpatientGroup.controls.patientId.errors && outpatientGroup.controls.patientId.touched"> Enter PatientId </div>
+    </div>
+    
+    <div class="form-group">
+        <label for="doctorId"><b>Doctor Id</b></label>
+        <input type="text" formControlName="doctorId" class="form-control" placeholder="Enter Doctor" required/>
+        <div style="color: red;" *ngIf="outpatientGroup.controls.doctorId.errors && outpatientGroup.controls.doctorId.touched"> Enter DoctorId </div>
+    </div>
+
+       <div class="form-group">
+        <label for="labTestId"><b>LabTest Id</b></label>
+        <input type="text" formControlName="labTestId" class="form-control" placeholder="Enter Labtest Id"required>
+        <div style="color: red;" *ngIf="outpatientGroup.controls.labTestId.errors && outpatientGroup.controls.labTestId.touched"> Enter labTest Id </div>
+    </div> -->
+
+    <div class="form-group">
+        <label><b>Patient Name</b></label>&nbsp;
+        <select formControlName="patientId" class="form-control" >
+            <option></option>
+            <option value="{{pat.patientId}}" *ngFor="let pat of patientList">{{pat.patientName}}</option>
+        </select>
+    </div>
+    
+    
+    <div class="form-group">
+        <label><b>Doctor Name</b></label>&nbsp;
+        <select formControlName="doctorId" class="form-control" >
+            <option></option>
+            <option value="{{doct.doctorId}}" *ngFor="let doct of doctorList">{{doct.doctorName}}</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label><b>LabTest Name</b></label>&nbsp;
+        <select formControlName="labTestId" class="form-control" >
+            <option></option>
+            <option value="{{lab.labTestId}}" *ngFor="let lab of labTestList">{{lab.labTestType}}</option>
+        </select>
+    </div>
+
+      <div class="form-group">
+        <label for="treatmentDate"><b>Treatment Date</b></label>
+        <input type="text" formControlName="treatmentDate" class="form-control" placeholder="Enter Treatment Date"/>
+        <div style="color: red;" *ngIf="outpatientGroup.controls.treatmentDate.errors && outpatientGroup.controls.treatmentDate.touched"> Enter TreatmentDate </div>
+    </div><br/>
+   
+    <div>
+        &nbsp;<input type="button" value="Save" (click)="saveOutPatient()" class="btn btn-sm btn-primary"/>&nbsp;
+        <input type="button" value="Delete" (click)="deleteOutPatient()" class="btn btn-sm btn-danger"/>&nbsp;
+        <input type="button" value="Update" (click)="updateOutPatient()" class="btn btn-sm btn-dark"/>&nbsp;
+        <a [routerLink]="['/outbill']" class="btn btn-sm btn-warning">OutBill</a>
+            
+    </div>
+</form>
+ </div>
+             
+            <div class="col-md-6">
+            <table class="table table-striped">
+            <tr>
+            <th>OutPatient Id</th>
+            <th>Patient Name</th>
+            <th>Doctor Name</th>
+            <th>Lab Test Type</th>
+            <th>Treatment Date</th>
+            
+
+            </tr>
+            <tr *ngFor="let out of outPatientList">
+            <td>{{out.outPatientId}}</td>
+            <td>{{out.patientName}}</td>
+            <td>{{out.doctorName}}</td>
+            <td>{{out.labTestType}}</td>
+            <td>{{out.treatmentDate | date:'mediumDate'}}</td>
+            
+            </tr>
+            </table>
+             
+            </div>
+            </div>

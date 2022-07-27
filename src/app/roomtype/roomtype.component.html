@@ -1,0 +1,70 @@
+<p>ROOM TYPE</p>
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body{
+            background-image: linear-gradient(to right bottom, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1);
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+<div class="row">
+    <div class="col-md-6 mt-2">
+    <form [formGroup]="roomtypeGroup">
+    
+    
+    <div class="form-group">
+    <label for="roomTypeId"><b>RoomType Id</b></label>&nbsp;
+    <input type="text" formControlName="roomTypeId"/>&nbsp;
+    <input type="button"value="Search" (click)="searchRoomType()"/>
+    </div><br/>
+    
+    
+    <div class="form-group">
+    <label for="roomTypeName"><b>RoomType Name</b></label>&nbsp;
+    <input type="text" formControlName="roomTypeName" class="form-control" placeholder="Enter RoomType Name" required/>
+    <div style="color: red;" *ngIf="roomtypeGroup.controls.roomTypeName.errors && roomtypeGroup.controls.roomTypeName.touched"> Enter RoomType Name </div>
+    </div><br/>
+    
+    <!-- <div class="form-group">
+    <label for="ChargesPerDay">ChargesPerDay</label>
+    <input type="text" formControlName="chargesPerDay"/>
+    </div> -->
+    
+    <div class="form-group">
+        <label for="chargesPerDay"><b>Charges per Day</b></label>&nbsp;
+        <input type="text" formControlName="chargesPerDay" class="form-control" placeholder="Enter Charges" required/>
+        <div style="color: red;" *ngIf="roomtypeGroup.controls.chargesPerDay.errors && roomtypeGroup.controls.chargesPerDay.touched"> Enter Charges per Day </div>
+
+    </div><br/>
+    
+    <div>
+    &nbsp;<input type="button" value="Save" (click)="saveRoomType()" class="btn btn-sm btn-primary"/>&nbsp;
+    <input type="button" value="Delete" (click)="deleteRoomType()" class="btn btn-sm btn-danger"/>&nbsp;
+    <input type="button" value="Update" (click)="updateRoomType()" class="btn btn-sm btn-dark"/>
+    </div>
+    </form>
+    </div>
+     
+    <div class="col-md-6">
+    <table class="table table-striped">
+    <tr>
+    <th>RoomType Id</th>
+    <th>RoomType Name</th>
+    <th>Charges Per Day</th>
+    </tr>
+
+    <tr *ngFor="let rt of roomtypeList">
+    <td>{{rt.roomTypeId}}</td>
+    <td>{{rt.roomTypeName | uppercase}}</td>
+    <td>{{rt.chargesPerDay | currency:'INR'}}</td>
+    </tr>
+    </table>
+     
+    </div>
+    </div>
+</body>
+</html>

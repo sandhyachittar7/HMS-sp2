@@ -1,0 +1,113 @@
+<p>INPATIENT</p>
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body{
+            background-image: linear-gradient(to right bottom, #cae195, #ddd183, #edc07a, #f9ae7c, #ff9d86, #f4948a, #e88b8d, #da848f, #c07f85, #a6797c, #8c7374, #716c6c);
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+<div class="row">
+    <div class="col-md-6 mt-2">
+    <form [formGroup]="inpatGroup">
+    
+    
+        <div class="form-group">
+    <label for="inPatientId"> <b>Inpatient Id</b> </label>&nbsp;
+    <input type="text" formControlName="inPatientId"/>&nbsp;
+    <input type="button"value="Search" (click)="searchInPatient()"/>
+    </div><br/>
+    
+    <!-- <div class="form-group">
+    <label for="patientId"><b>Patient Id</b>  </label> &nbsp;
+    <input type="text" formControlName="patientId" class="form-control" placeholder="Enter PatientId" required/> &nbsp;
+    <div style="color: red;" *ngIf="inpatGroup.controls.patientId.errors && inpatGroup.controls.patientId.touched"> Enter Patient Id</div>&nbsp;
+    </div> -->
+
+    <div class="form-group">
+        <label><b>Patient Name</b></label>&nbsp;
+        <select formControlName="patientId" class="form-control" >
+            <option></option>
+            <option value="{{pat.patientId}}" *ngFor="let pat of patientList">{{pat.patientName}}</option>
+        </select>
+    </div>
+    
+    
+    <div class="form-group">
+        <label><b>Doctor Name</b></label>&nbsp;
+        <select formControlName="doctorId" class="form-control" >
+            <option></option>
+            <option value="{{doct.doctorId}}" *ngFor="let doct of doctorList">{{doct.doctorName}}</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label><b>LabTest Name</b></label>&nbsp;
+        <select formControlName="labTestId" class="form-control" >
+            <option></option>
+            <option value="{{lab.labTestId}}" *ngFor="let lab of labTestList">{{lab.labTestType}}</option>
+        </select>
+    </div>
+    
+    <div class="form-group">
+    <label for="admissionDate"><b>Admission Date</b></label>&nbsp;
+    <input type="text" formControlName="admissionDate"class="form-control" placeholder="Enter Admission Date" required/>&nbsp;
+    <div style="color: red;" *ngIf="inpatGroup.controls.admissionDate.errors && inpatGroup.controls.admissionDate.touched"> Enter Admission Date </div>
+    </div>
+
+    <!-- <div class="form-group">
+        <label><b>Room Name</b></label>&nbsp;
+        <select formControlName="rommId" class="form-control" >
+            <option></option>
+            <option value="{{rm.roomId}}" *ngFor="let rm of doctorList">{{rm.roomName}}</option>
+        </select>
+    </div> -->
+    
+    <div class="form-group">
+    <label for="roomId"><b>Room Id</b></label> &nbsp;
+    <input type="text" formControlName="roomId" class="form-control" placeholder="Enter RoomId" required/>
+    </div><br/>
+    
+    <div>
+    &nbsp;<input type="button" value="Save" (click)="saveInPatient()" class="btn btn-sm btn-primary"/>&nbsp;
+    <!-- <input type="button" value="Delete" (click)="deleteInPatient()" class="btn btn-sm btn-danger"/>&nbsp; -->
+    <input type="button" value="Update" (click)="updateInPatient()" class="btn btn-sm btn-dark"/>&nbsp;
+    <a [routerLink]="['/inbill']" class="btn btn-sm btn-warning">InBill</a>
+    <!-- <a routerLink="inbill" class="btn btn-sm btn-primary">InBill</a> &nbsp;&nbsp;  -->
+    
+    
+    </div>
+    </form>
+    </div>
+    <br/>
+    <div class="col-md-6">
+    <table class="table table-striped">
+    <tr>
+    <th>InPatient Id</th>&nbsp;
+    <th>Patient Name</th>&nbsp;
+    <th>Doctor Name</th>&nbsp;
+    <th>Admission Date</th>&nbsp;
+    <th>LabTest Type</th>&nbsp;
+    <th>Room Id</th>&nbsp;&nbsp;&nbsp;
+    </tr>
+    <tr *ngFor="let inpat of inpatientList">
+    <td>{{inpat.inPatientId}}</td>&nbsp;
+    <td>{{inpat.patientName}}</td>&nbsp;
+    <td>{{inpat.doctorName}}</td>&nbsp;
+    <td>{{inpat.admissionDate | date:'mediumDate'}}</td>&nbsp;
+    <td>{{inpat.labTestType}}</td>&nbsp;
+    <td>{{inpat.roomId}}</td>&nbsp;&nbsp;&nbsp;
+   
+    <!-- <input type="button" value="Inbill" (click)="Inbill()" class="btn btn-sm btn-dark"/> -->
+    </tr>
+    </table>
+    <!-- <a routerLink="Inbill" class="btn btn-sm btn-primary">InBill</a> &nbsp;&nbsp;  -->
+     
+    </div>
+    </div>
+    </body>
+    </html>

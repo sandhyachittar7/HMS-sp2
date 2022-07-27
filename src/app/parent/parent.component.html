@@ -1,0 +1,49 @@
+ <!DOCTYPE html>
+ <html>
+  <head>
+    <style>
+      body{
+        background-image: url(../assets/Images/HMS.jpeg);
+        width: 1550px;
+        height: 700px;
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+      }
+    </style>
+  </head>
+  <body>
+     
+  
+<div class="container">
+    <div class="row">
+      <div class="col-md-12 bg-secondary p-2">
+        <!-- <a routerLink="" class="btn btn-sm btn-info">Employees</a> &nbsp;&nbsp; -->
+         <a routerLink="department" *ngIf="status.userrole=='Admin'" class="btn btn-sm btn-primary">Department</a> &nbsp;&nbsp; 
+         <a routerLink="doctor"*ngIf="status.userrole=='Admin'" class="btn btn-sm btn-primary">Doctor</a> &nbsp;&nbsp; 
+         <a routerLink="labtest" *ngIf="status.userrole=='Admin'" class="btn btn-sm btn-primary">Lab Test</a> &nbsp;&nbsp; 
+         <a routerLink="roomtype" *ngIf="status.userrole=='Admin'" class="btn btn-sm btn-primary">Room Type</a> &nbsp;&nbsp; 
+         <a routerLink="room" *ngIf="status.userrole=='Admin'" class="btn btn-sm btn-primary">Room</a> &nbsp;&nbsp; 
+
+         <a routerLink="createpatient" *ngIf="status.userrole=='Staff'" class="btn btn-sm btn-primary">Create Patient</a> &nbsp;&nbsp;
+         <a routerLink="displaypatient" *ngIf="status.userrole=='Staff'" class="btn btn-sm btn-primary">Display Patient</a> &nbsp;&nbsp; 
+        <a routerLink="inpatient" *ngIf="status.userrole=='Staff'" class="btn btn-sm btn-primary">Inpatient</a> &nbsp;&nbsp; 
+         <a routerLink="outpatient" *ngIf="status.userrole=='Staff'" class="btn btn-sm btn-primary">Outpatient</a> &nbsp;&nbsp; 
+         <a routerLink="patientlabtestdetails" *ngIf="status.userrole=='Staff'" class="btn btn-sm btn-primary">Patient Test Details</a> &nbsp;&nbsp; 
+          
+        <a routerLink="register"  class="btn btn-sm btn-success">Register</a> &nbsp;&nbsp;
+        <a routerLink="login" *ngIf="!status.logged" class="btn  btn-sm btn-success">Login</a> &nbsp;&nbsp;
+        <a routerLink="logout" *ngIf="status.logged" class="btn  btn-sm btn-dark">Logout</a> &nbsp;&nbsp;
+
+        <a *ngIf="status.logged">{{username}}</a>
+        <a *ngIf="status.logged">{{status.username}}</a>
+        
+      </div>
+    </div>
+    <div class="row bg-light">
+      <router-outlet></router-outlet>
+    </div>
+</div>
+</body>
+</html> 
+
+

@@ -1,0 +1,100 @@
+<p>INPATIENT BILL</p>
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body{
+            background-image: linear-gradient(to right bottom, #cae195, #ddd183, #edc07a, #f9ae7c, #ff9d86, #f4948a, #e88b8d, #da848f, #c07f85, #a6797c, #8c7374, #716c6c);
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+<div class="row">
+    <div class="col-md-6 mt-2">
+        <form [formGroup]="inBillGroup">
+            <div class="form-group">
+                <label for="billId"><b>Bill Id</b></label>&nbsp;
+                <input type="text" id="billId"  formControlName="billId" />&nbsp;
+                <input type="button" value="Search" (click)="searchInBill()" />
+            </div><br/>
+
+            <div class="form-group">
+                <label for="inPatientId"><b>InPatient Id</b></label>
+                <input type="text" id="inPatientId"  formControlName="inPatientId" />
+            </div>
+
+        <div class="form-group">
+            <label for="doctorFees"><b>Doctor Fees</b></label>
+            <input type="text"(change)="calculatetotal()" formControlName="doctorFees" class="form-control" />    
+        </div>
+         
+        
+
+        <div class="form-group">
+            <label for="operationCharges"><b>Operation Charges</b></label>
+            <input type="text" (change)="calculatetotal()" formControlName="operationCharges" class="form-control" />
+        </div>
+
+        <div class="form-group">
+           <label for="medicineCharges"><b>Medicine Charges</b></label>
+            <input type="text" (change)="calculatetotal()" formControlName="medicineCharges" class="form-control" />
+        </div>
+
+       <div class="form-group">
+           <label for="roomCharges"><b>Room Charges</b></label>
+            <input type="text" (change)="calculatetotal()" formControlName="roomCharges" class="form-control" />
+        </div>
+
+        <div class="form-group">
+           <label for="labCharges"><b>Lab Charges</b></label>
+            <input type="text" (change)="calculatetotal()" formControlName="labCharges" class="form-control" />
+        </div>
+
+       <div class="form-group">
+           <label for="totalAmount"><b>Total Amount</b></label>
+            <input type="text" formControlName="totalAmount" class="form-control" />
+        </div><br/>
+<div>
+   &nbsp; <input type="button" value="Save" (click)="saveInBill()" class="btn btn-sm btn-primary"/>&nbsp;
+    <!-- <input type="button" value="Delete" (click)="deleteInBill()" class="btn btn-sm btn-danger" /> -->
+    <input type="button" value="Update" (click)="updateInBill()" class="btn btn-sm btn-dark" />
+
+</div>
+    </form>
+    </div>
+
+    <div class="col-md-8">
+        <table class="table table-striped">
+            <tr>
+                <th>Inbill Id</th>&nbsp;&nbsp;
+                <th>InPatient Id</th>&nbsp;&nbsp;
+                <th>Doctor Fees</th>&nbsp;&nbsp;
+                <th>Operation Charges</th>&nbsp;&nbsp;
+                <th>Medicine Charges</th>&nbsp;&nbsp;
+                <th>Room Charges</th>&nbsp;&nbsp;
+               <th>Lab Charges</th>&nbsp;&nbsp;
+              <th>Total Amount</th>
+            </tr>
+            <tr *ngFor="let bill of inBillList">
+                <td>{{bill.billId}}</td>&nbsp;&nbsp;
+                <td>{{bill.inPatientId}}</td>&nbsp;&nbsp;
+                <td>{{bill.doctorFees | currency:'INR'}}</td>&nbsp;&nbsp;
+                <td>{{bill.operationCharges | currency:'INR'}}</td>&nbsp;&nbsp;
+                <td>{{bill.medicineCharges | currency:'INR'}}</td>&nbsp;&nbsp;
+               <td>{{bill.roomCharges | currency:'INR'}}</td>&nbsp;&nbsp;
+                <td>{{bill.labCharges | currency:'INR'}}</td>&nbsp;&nbsp;&nbsp;
+               <td>{{calculateamount(bill) | currency:'INR'}}</td>
+            </tr>
+        </table>
+
+    </div>
+</div>
+</body>
+</html>
+
+
+
+
+

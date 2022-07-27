@@ -1,0 +1,66 @@
+<p>LAB TEST</p>
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body{
+            background-image: linear-gradient(to right bottom, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1);
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+<div class="row">
+    <div class="col-md-6 mt-2">
+<form [formGroup]="labtestGroup">
+    
+    
+    <div class="form-group">
+        <label for="labTestId"><b>LabTest Id</b></label>&nbsp;
+        <input type="text" formControlName="labTestId"/>&nbsp;
+        <input type="button"value="Search" (click)="searchLabTest()"/>
+    </div><br/>
+    
+    <div class="form-group">
+        <label for="labTestType"><b>LabTest Type</b></label>
+        <!-- <select formControlName="labTestType" class="form-control">
+            <option></option>
+            <option>HB</option>
+            <option>SCAN</option>
+        </select> -->
+        <input type="text" formControlName="labTestType" class="form-control"  placeholder="Enter LabTest Type" required/>
+    </div><br/>
+    
+    <div class="form-group">
+        <label for="price"><b>Price</b></label>
+        <input type="text" formControlName="price" class="form-control" placeholder="Enter Price" required/>
+    </div><br/>
+   
+    <div>
+        &nbsp;<input type="button" value="Save" (click)="saveLabTest()" class="btn btn-sm btn-primary"/>&nbsp;
+        <input type="button" value="Delete" (click)="deleteLabTest()" class="btn btn-sm btn-danger"/>&nbsp;
+        <input type="button" value="Update" (click)="updateLabTest()" class="btn btn-sm btn-dark"/>
+            
+    </div>
+</form>
+ </div>
+             
+            <div class="col-md-6">
+            <table class="table table-striped">
+            <tr>
+            <th>LabTest Id</th>
+            <th>LabTest Type</th>
+            <th>Price</th>
+            </tr>
+            <tr *ngFor="let lab of labTestList">
+            <td>{{lab.labTestId}}</td>
+            <td>{{lab.labTestType | uppercase}}</td>
+            <td>{{lab.price | currency:'INR'}}</td>
+            </tr>
+            </table>
+             
+            </div>
+            </div>
+        </body>
+        </html>

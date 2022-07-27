@@ -1,0 +1,67 @@
+<p>DOCTOR</p>
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body{
+            background-image: linear-gradient(to right bottom, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1);
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+<div class="row">
+    <div class="col-md-6 mt-2">
+        <form [formGroup]="docGroup">
+
+            <div class="form-group">
+                <label for="doctorId"><b>Doctor Id</b></label>&nbsp;
+                <input type="text" formControlName="doctorId" />&nbsp;
+                <input type="button" value="Search" (click)="searchDoctor()"/>
+            </div><br/>
+        <div class="form-group">
+            <label for="doctorName"><b>Doctor Name</b></label>&nbsp;
+            <input type="text" formControlName="doctorName" class="form-control" placeholder="Enter Doctor Name" required />
+            <div style="color: red;" *ngIf="docGroup.controls.doctorName.errors && docGroup.controls.doctorName.touched"> Enter Doctor Name</div>
+        </div><br/>
+        <div class="form-group">
+            <label for="doctorFees"><b>Doctor Fees</b></label>&nbsp;
+            <input type="text" formControlName="doctorFees" class="form-control"  placeholder="Enter Fees" required/>
+            <div style="color: red;" *ngIf="docGroup.controls.doctorFees.errors && docGroup.controls.doctorFees.touched"> Enter Doctor Fees</div>
+        </div><br/>
+        <div class="form-group">
+            <label><b>Department Name</b></label>&nbsp;
+            <select formControlName="departmentId" class="form-control" >
+                <option></option>
+                <option value="{{dept.departmentId}}" *ngFor="let dept of departmentList">{{dept.departmentName}}</option>
+            </select>
+        </div><br/>
+       
+<div>
+    &nbsp;<input type="button" value="Save" (click)="saveDoctor()" class="btn btn-sm btn-primary"/>&nbsp;
+    <input type="button" value="Delete" (click)="deleteDoctor()" class="btn btn-sm btn-danger" />&nbsp;
+    <input type="button" value="Update" (click)="updateDoctor()" class="btn btn-sm btn-dark" />
+</div>
+    </form>
+    </div>
+    <div class="col-md-6">
+        <table class="table table-striped">
+            <tr>
+                <th>Doctor Id</th>
+                 <th>Doctor Name</th>
+                 <th>Doctor Fees</th>
+                <th>Department Name</th>   
+            </tr>
+            <tr *ngFor="let doc of doctorList">
+                <td>{{doc.doctorId}}</td>
+                <td>{{doc.doctorName | uppercase}}</td>
+                <td>{{doc.doctorFees  | currency:'INR'}}</td>
+                <td>{{doc.departmentName | uppercase}}</td>        
+            </tr>
+        </table>
+    </div>
+</div>
+</body>
+</html>
